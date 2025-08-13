@@ -1,5 +1,4 @@
 import fastify from 'fastify';
-// import crypto from 'crypto';
 import { db } from './src/database/client.ts'
 import { eq } from 'drizzle-orm'
 import { courses } from './src/database/schema.ts';
@@ -15,12 +14,6 @@ const server = fastify({
         },
     }
 });
-
-// const courses = [
-//     { id: '1', title: 'Curso de Node.js'},
-//     { id: '2', title: 'Curso de React'},
-//     { id: '3', title: 'Curso de React Native'},
-// ]
 
 server.get('/courses', async (request, response) => {
     const result = await db.select({
@@ -53,7 +46,7 @@ server.post('/courses', async (request, response) => {
     const body = request.body as Body;
     const courseTitle = body.title;
     if (!courseTitle) {
-        return response.status(400).send({ message: 'Título obrigatório' });
+        return response.status(400).send({ message: 'Title is required.' });
     }
     const result = await db
         .insert(courses)

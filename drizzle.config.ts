@@ -1,7 +1,7 @@
 import { defineConfig } from 'drizzle-kit';
 
 if (!process.env.DATABASE_URL) {
-    throw new Error ('The DATABASE_URL env ir required.');
+    throw new Error ('The DATABASE_URL env is required.');
 }
 
 export default defineConfig({
