@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import { fastifySwagger } from '@fastify/swagger';
 import { fastifySwaggerUi } from '@fastify/swagger-ui';
+import scalarAPIReference from '@scalar/fastify-api-reference';
 import {
     jsonSchemaTransform,
     validatorCompiler,
@@ -34,7 +35,10 @@ server.register(fastifySwagger, {
 });
 server.register(fastifySwaggerUi, {
     routePrefix: '/docs'
-})
+});
+server.register(scalarAPIReference, {
+    routePrefix: '/docs-scalar'
+});
 
 server.setSerializerCompiler(serializerCompiler);
 server.setValidatorCompiler(validatorCompiler);
