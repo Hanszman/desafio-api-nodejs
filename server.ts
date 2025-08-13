@@ -1,5 +1,12 @@
 import fastify from 'fastify';
-import { validatorCompiler, serializerCompiler, type ZodTypeProvider } from 'fastify-type-provider-zod';
+import { fastifySwagger } from '@fastify/swagger';
+import { fastifySwaggerUi } from '@fastify/swagger-ui';
+import {
+    jsonSchemaTransform,
+    validatorCompiler,
+    serializerCompiler,
+    type ZodTypeProvider
+} from 'fastify-type-provider-zod';
 import { z } from 'zod';
 import { db } from './src/database/client.ts'
 import { eq } from 'drizzle-orm'
@@ -17,6 +24,19 @@ const server = fastify({
     }
 }).withTypeProvider<ZodTypeProvider>();
 
+server.register(fastifySwagger, {
+    openapi: {
+        info: {
+            title: 'Desafio Node.js',
+            version: '1.0.0',
+        }
+    },
+    transform: jsonSchemaTransform,
+});
+server.register(fastifySwaggerUi, {
+    routePrefix: '/docs'
+})
+
 server.setSerializerCompiler(serializerCompiler);
 server.setValidatorCompiler(validatorCompiler);
 
@@ -28,12 +48,14 @@ server.get('/courses', async (request, response) => {
     return response.send({courses: result})
 });
 
-server.get('/courses/:id', async (request, response) => {
-    type Params = {
-        id: string
+server.get('/courses/:id', {
+    schema: {
+        params: z.object({
+            id: z.uuid(),
+        })
     }
-    const params = request.params as Params;
-    const courseId = params.id;
+}, async (request, response) => {
+    const courseId = request.params.id;
     const result = await db
         .select()
         .from(courses)
