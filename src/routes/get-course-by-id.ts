@@ -24,7 +24,8 @@ export const getCourseByIdRoute: FastifyPluginAsyncZod = async (server) => {
                 404: z.null().describe('Course not found')
             }
         }
-    }, async (request, response) => {
+    },
+    async (request, response) => {
         const courseId = request.params.id;
         const result = await db
             .select()

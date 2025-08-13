@@ -16,7 +16,8 @@ export const createCourseRoute: FastifyPluginAsyncZod = async (server) => {
                 201: z.object({ courseId: z.uuid() }).describe('Course created successfully')
             }
         }
-    }, async (request, response) => {
+    },
+    async (request, response) => {
         const courseTitle = request.body.title;
         const result = await db
             .insert(courses)
