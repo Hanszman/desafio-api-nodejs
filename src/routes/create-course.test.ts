@@ -1,4 +1,5 @@
 import { expect, test } from 'vitest';
+import supertest from 'supertest';
 
 function soma(a: number, b: number) {
     return a + b;
