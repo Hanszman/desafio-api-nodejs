@@ -1,11 +1,12 @@
 import { expect, test } from 'vitest';
-import supertest from 'supertest';
+import request from 'supertest';
+import { server } from '../app.ts'
 
-function soma(a: number, b: number) {
-    return a + b;
-}
+test('should create course successfully', async () => {
+    const response = await request(server.server)
+        .post('/courses')
+        .set('Content-Type', 'application/json')
+        .send({ title: 'Curso de Vue' });
 
-test('should create course successfully', () => {
-    const sum = soma(1, 2);
-    expect(sum).toEqual(3);
+    console.log(response.body);
 })
