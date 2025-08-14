@@ -21,6 +21,7 @@ export const getCoursesRoute: FastifyPluginAsyncZod = async (server) => {
                         z.object({
                             id: z.uuid(),
                             title: z.string(),
+                            enrollments: z.number(),
                         })
                     ),
                     total: z.number()
@@ -43,7 +44,7 @@ export const getCoursesRoute: FastifyPluginAsyncZod = async (server) => {
             .leftJoin(enrollments, eq(enrollments.courseId, courses.id))
             .orderBy(asc(courses[orderBy]))
             .offset((page - 1) * 2)
-            .limit(2)
+            .limit(10)
             .where(and(...conditions))
             .groupBy(courses.id),
             db.$count(courses, and(...conditions))

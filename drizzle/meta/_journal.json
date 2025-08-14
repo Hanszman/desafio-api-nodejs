@@ -36,6 +36,13 @@
       "when": 1755126241568,
       "tag": "0004_loose_jimmy_woo",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1755207700611,
+      "tag": "0005_classy_greymalkin",
+      "breakpoints": true
     }
   ]
 }
