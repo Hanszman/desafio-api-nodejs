@@ -2,15 +2,17 @@ GET http://localhost:3333/courses
 
 ###
 
-GET http://localhost:3333/courses/1812765c-b040-4da0-90da-a325ac66b6cd
+GET http://localhost:3333/courses/7ef93cc9-6297-492e-963d-5cd58705716c
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZTI2MTY4MS1kMGUzLTRhNjctYjcyZC0wMjg5MWJmZDZlYzYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc1NTM3ODg1MH0.7-UYGzf9OxCXdd7WfnwJwXRvK7WRzlVE9GzSCPv9zvQ
 
 ###
 
 POST http://localhost:3333/courses
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZTI2MTY4MS1kMGUzLTRhNjctYjcyZC0wMjg5MWJmZDZlYzYiLCJyb2xlIjoibWFuYWdlciIsImlhdCI6MTc1NTM3ODg1MH0.7-UYGzf9OxCXdd7WfnwJwXRvK7WRzlVE9GzSCPv9zvQ
 
 {
-    "title": "Curso de C#"
+    "title": "Curso de React"
 }
 
 ###
