@@ -50,6 +50,13 @@
       "when": 1755271603823,
       "tag": "0006_handy_wrecking_crew",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1755374699848,
+      "tag": "0007_cloudy_crystal",
+      "breakpoints": true
     }
   ]
 }

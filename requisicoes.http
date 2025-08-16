@@ -12,3 +12,13 @@ Content-Type: application/json
 {
     "title": "Curso de C#"
 }
+
+###
+
+POST http://localhost:3333/sessions
+Content-Type: application/json
+
+{
+    "email": "Alessandro_Moraes@yahoo.com",
+    "password": "123456"
+}

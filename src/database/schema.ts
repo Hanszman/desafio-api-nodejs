@@ -24,6 +24,7 @@ export const courses = pgTable('courses', {
     id: uuid().primaryKey().defaultRandom(),
     title: text().notNull().unique(),
     description: text(),
+    category: text().$type<'frontend' | 'backend'>()
 });
 
 export const enrollments = pgTable('enrollments', {
